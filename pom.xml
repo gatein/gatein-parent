@@ -14,13 +14,13 @@
   
   <groupId>org.gatein</groupId>
   <artifactId>gatein-parent</artifactId>
-  <version>1.0.0-Beta02</version>
+  <version>1.0.0-Beta03</version>
   <packaging>pom</packaging>
     
   <scm>
-    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/tools/maven/parent/tags/1.0.0-Beta02</connection>
-    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/tools/maven/parent/tags/1.0.0-Beta02</developerConnection>
-    <url>http://fisheye.jboss.org/browse/gatein/tools/maven/parent/tags/1.0.0-Beta02</url>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/tools/maven/parent/tags/1.0.0-Beta03</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/tools/maven/parent/tags/1.0.0-Beta03</developerConnection>
+    <url>http://fisheye.jboss.org/browse/gatein/tools/maven/parent/tags/1.0.0-Beta03</url>
   </scm>
   
   <properties>
@@ -61,7 +61,6 @@
             <archive>
               <manifest>
                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                <addClasspath>true</addClasspath>
               </manifest>
             </archive>
           </configuration>
