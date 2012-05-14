@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.jboss</groupId>
     <artifactId>jboss-parent</artifactId>
-    <version>5</version>
+    <version>6-beta-2</version>
   </parent>
 
   <name>GateIn - Maven parent</name>
@@ -14,13 +14,13 @@
   
   <groupId>org.gatein</groupId>
   <artifactId>gatein-parent</artifactId>
-  <version>1.1.0-Beta01</version>
+  <version>1.1.0-Beta02</version>
   <packaging>pom</packaging>
     
   <scm>
-    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/maven/parent/tags/1.1.0-Beta01</connection>
-    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/maven/parent/tags/1.1.0-Beta01</developerConnection>
-    <url>http://fisheye.jboss.org/browse/gatein/maven/parent/tags/1.1.0-Beta01</url>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/maven/parent/tags/1.1.0-Beta02</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/maven/parent/tags/1.1.0-Beta02</developerConnection>
+    <url>http://fisheye.jboss.org/browse/gatein/maven/parent/tags/1.1.0-Beta02</url>
   </scm>
   
   <properties>
@@ -33,11 +33,6 @@
     <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
     <maven.compiler.optimize>true</maven.compiler.optimize>
 
-    <!-- maven-compiler-plugin -->
-    <maven.compiler.target>1.6</maven.compiler.target>
-    <maven.compiler.source>1.6</maven.compiler.source>
-
-    <!-- maven-enforcer-plugin -->
     <maven.min.version>2.2.1</maven.min.version>
         
     <!-- maven-release-plugin -->
@@ -49,21 +44,13 @@
     <!-- **************** -->
     <!-- Plugins versions -->
     <!-- **************** -->
-    <version.antrun.plugin>1.6</version.antrun.plugin>
-    <version.clean.plugin>2.4.1</version.clean.plugin>
     <version.checkstyle.plugin>2.6</version.checkstyle.plugin>
     <version.compiler.plugin>2.3.2</version.compiler.plugin>
     <version.dependency.plugin>2.2</version.dependency.plugin>
-    <version.deploy.plugin>2.5</version.deploy.plugin>
-    <version.install.plugin>2.3.1</version.install.plugin>
-    <version.jar.plugin>2.3.1</version.jar.plugin>
     <version.surefire.plugin>2.7.2</version.surefire.plugin>
-    <version.resources.plugin>2.4.3</version.resources.plugin>
+    <version.site.plugin>2.2</version.site.plugin>
     <version.war.plugin>2.1.1</version.war.plugin>
     <version.ear.plugin>2.5</version.ear.plugin>
-    <version.site.plugin>2.2</version.site.plugin>
-    <version.source.plugin>2.1.2</version.source.plugin>
-    <version.javadoc.plugin>2.7</version.javadoc.plugin>
     <version.buildnumber.plugin>1.0-beta-4</version.buildnumber.plugin>
     <version.exec.plugin>1.2</version.exec.plugin>
     <version.build-helper.plugin>1.5</version.build-helper.plugin>
@@ -80,6 +67,11 @@
       <!-- Plugins are sorted by shortname : clean, deploy, ... -->
       <plugins>
         <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-site-plugin</artifactId>
+           <version>${version.site.plugin}</version>
+        </plugin>
+        <plugin>
            <groupId>org.codehaus.mojo</groupId>
            <artifactId>exec-maven-plugin</artifactId>
            <version>${version.exec.plugin}</version>
@@ -88,11 +80,6 @@
            <groupId>org.codehaus.mojo</groupId>
            <artifactId>build-helper-maven-plugin</artifactId>
            <version>${version.build-helper.plugin}</version>
-        </plugin>
-	<plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-antrun-plugin</artifactId>
-          <version>${version.antrun.plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -106,11 +93,6 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>${version.clean.plugin}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>${version.compiler.plugin}</version>
         </plugin>
@@ -121,39 +103,9 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>${version.deploy.plugin}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>${version.install.plugin}</version>
-        </plugin>
-        <plugin>                
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>${version.resources.plugin}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <version>${version.javadoc.plugin}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>${version.site.plugin}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${version.surefire.plugin}</version>
         </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-source-plugin</artifactId>
-          <version>${version.source.plugin}</version>
-        </plugin>   
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-war-plugin</artifactId>
@@ -163,29 +115,6 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-ear-plugin</artifactId>
           <version>${version.ear.plugin}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>${version.jar.plugin}</version>
-          <configuration>
-            <archive>
-              <manifest>
-                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-              </manifest>
-            </archive>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <configuration>
-            <archive>
-              <manifest>
-                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-              </manifest>
-            </archive>
-          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
