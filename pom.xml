@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.jboss</groupId>
     <artifactId>jboss-parent</artifactId>
-    <version>5-beta-5</version>
+    <version>5</version>
   </parent>
 
   <name>GateIn - Maven parent</name>
@@ -14,13 +14,13 @@
   
   <groupId>org.gatein</groupId>
   <artifactId>gatein-parent</artifactId>
-  <version>1.0.0-GA</version>
+  <version>1.0.1-GA</version>
   <packaging>pom</packaging>
     
   <scm>
-    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/maven/parent/tags/1.0.0-GA</connection>
-    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/maven/parent/tags/1.0.0-GA</developerConnection>
-    <url>http://fisheye.jboss.org/browse/gatein/maven/parent/tags/1.0.0-GA</url>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/maven/parent/tags/1.0.1-GA</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/maven/parent/tags/1.0.1-GA</developerConnection>
+    <url>http://fisheye.jboss.org/browse/gatein/maven/parent/tags/1.0.1-GA</url>
   </scm>
   
   <properties>
@@ -202,53 +202,40 @@
   <!-- **************** -->
   <!-- Repositiories    -->
   <!-- **************** -->
-  
   <repositories>
     <repository>
-      <id>repository.jboss.org</id>
-      <name>JBoss Repository</name>
-      <url>http://repository.jboss.org/maven2</url>
-    </repository>
-    <repository>
-      <id>snapshots.jboss.org</id>
-      <name>JBoss Snapshots Repository</name>
-      <url>http://snapshots.jboss.org/maven2</url>
+      <id>jboss-public-repository-group</id>
+      <name>JBoss Public Maven Repository Group</name>
+      <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+      <layout>default</layout>
       <releases>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
       </releases>
       <snapshots>
         <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
       </snapshots>
     </repository>
   </repositories>
-  
+
   <pluginRepositories>
     <pluginRepository>
-      <id>apache.org</id>
-      <name>Maven Plugin Snapshots</name>
-      <url>http://people.apache.org/repo/m2-snapshot-repository</url>
+      <id>jboss-public-repository-group</id>
+      <name>JBoss Public Maven Repository Group</name>
+      <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+      <layout>default</layout>
       <releases>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
       </releases>
       <snapshots>
         <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-    <pluginRepository>
-      <id>repository.jboss.org</id>
-      <name>JBoss Repository</name>
-      <url>http://repository.jboss.org/maven2</url>
-    </pluginRepository>
-    <pluginRepository>
-      <id>java.net maven repository</id>
-      <url>http://download.java.net/maven/2</url>
-      <snapshots>
-        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
 
-  
   <!-- **************** -->
   <!-- Reporting        -->
   <!-- **************** -->
