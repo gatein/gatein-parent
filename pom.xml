@@ -14,13 +14,13 @@
   
   <groupId>org.gatein</groupId>
   <artifactId>gatein-parent</artifactId>
-  <version>1.1.0-GA</version>
+  <version>1.1.1-Beta01-SNAPSHOT</version>
   <packaging>pom</packaging>
     
   <scm>
-    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/maven/parent/tags/1.1.0-GA</connection>
-    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/maven/parent/tags/1.1.0-GA</developerConnection>
-    <url>http://fisheye.jboss.org/browse/gatein/maven/parent/tags/1.1.0-GA</url>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/maven/parent/trunk</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/maven/parent/trunk</developerConnection>
+    <url>http://fisheye.jboss.org/browse/gatein/maven/parent/trunk</url>
   </scm>
   
   <properties>
