@@ -1,0 +1,270 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>org.jboss</groupId>
+    <artifactId>jboss-parent</artifactId>
+    <version>5-beta-3</version>
+  </parent>
+
+  <name>GateIn parent</name>
+  <description>Parent POM for GateIn components project.</description>
+  <url>www.jboss.org/gatein</url>
+  
+  <groupId>org.gatein</groupId>
+  <artifactId>gatein-parent</artifactId>
+  <version>1.0.0-Beta01</version>
+  <packaging>pom</packaging>
+    
+  <scm>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/tools/maven/parent/tags/1.0.0-Beta01</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/tools/maven/parent/tags/1.0.0-Beta01</developerConnection>
+    <url>http://fisheye.jboss.org/browse/gatein/tools/maven/parent/tags/1.0.0-Beta01</url>
+  </scm>
+  
+  <properties>
+    <!-- ************** -->
+    <!-- Build settings -->
+    <!-- ************** -->
+    
+    <!-- maven-compiler-plugin -->
+    <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+    <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+    <maven.compiler.optimize>true</maven.compiler.optimize>
+
+    <!-- maven-enforcer-plugin -->
+    <maven.min.version>2.2.1</maven.min.version>
+        
+    <!-- maven-release-plugin -->
+    <autoVersionSubmodules>true</autoVersionSubmodules>
+  </properties>
+  
+  <!-- **************** -->
+  <!-- Build Definition -->
+  <!-- **************** -->
+  
+  <build>
+    <pluginManagement>
+      <!-- All plugins versions have to be set -->
+      <!-- Plugins are sorted by shortname : clean, deploy, ... -->
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>jboss-packaging-maven-plugin</artifactId>
+          <version>2.0-beta-1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <configuration>
+            <archive>
+              <manifest>
+                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                <addClasspath>true</addClasspath>
+              </manifest>
+            </archive>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <configuration>
+            <archive>
+              <manifest>
+                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+              </manifest>
+            </archive>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <configuration>
+            <!-- This is a workaroud for MSOURCES-44 -->
+            <includePom>true</includePom>
+            <archive>
+              <manifest>
+                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+              </manifest>
+            </archive>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>release</id>
+      <repositories>
+        <!--  Used by animal-sniffer -->
+        <repository>
+          <id>maven2-repository.dev.java.net</id>
+          <name>Java.net Repository for Maven</name>
+          <url>http://download.java.net/maven/2/</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <!--  Used by animal-sniffer -->
+        <pluginRepository>
+          <id>maven2-repository.dev.java.net</id>
+          <name>Java.net Repository for Maven</name>
+          <url>http://download.java.net/maven/2/</url>
+        </pluginRepository>
+      </pluginRepositories>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-jar-plugin</artifactId>
+              <configuration>
+                <archive>
+                  <!-- Additional entries in Manifest -->
+                  <manifestEntries>
+                    <SCM-Revision>${buildNumber}</SCM-Revision>
+                  </manifestEntries>
+                </archive>
+              </configuration>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-javadoc-plugin</artifactId>
+              <configuration>
+                <archive>
+                  <!-- Additional entries in Manifest -->
+                  <manifestEntries>
+                    <SCM-Revision>${buildNumber}</SCM-Revision>
+                  </manifestEntries>
+                </archive>
+              </configuration>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-source-plugin</artifactId>
+              <configuration>
+                <archive>
+                  <!-- Additional entries in Manifest -->
+                  <manifestEntries>
+                    <SCM-Revision>${buildNumber}</SCM-Revision>
+                  </manifestEntries>
+                </archive>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>buildnumber-maven-plugin</artifactId>
+            <configuration>
+              <revisionOnScmFailure>no_revision</revisionOnScmFailure>
+            </configuration>
+            <executions>
+              <execution>
+                <phase>initialize</phase>
+                <goals>
+                  <goal>create</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.jvnet</groupId>
+            <artifactId>animal-sniffer</artifactId>
+            <version>1.2</version>
+            <executions>
+              <execution>
+                <id>check-java-compatibility</id>
+                <phase>compile</phase>
+                <goals>
+                  <goal>check</goal>
+                </goals>
+                <configuration>
+                  <signature>
+                    <groupId>org.jvnet.animal-sniffer</groupId>
+                    <artifactId>java1.5</artifactId>
+                    <version>1.0</version>
+                  </signature>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <!-- **************** -->
+  <!-- Repositiories    -->
+  <!-- **************** -->
+  
+  <repositories>
+    <repository>
+      <id>repository.jboss.org</id>
+      <name>JBoss Repository</name>
+      <url>http://repository.jboss.org/maven2</url>
+    </repository>
+    <repository>
+      <id>snapshots.jboss.org</id>
+      <name>JBoss Snapshots Repository</name>
+      <url>http://snapshots.jboss.org/maven2</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+  
+  <pluginRepositories>
+    <pluginRepository>
+      <id>apache.org</id>
+      <name>Maven Plugin Snapshots</name>
+      <url>http://people.apache.org/repo/m2-snapshot-repository</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>repository.jboss.org</id>
+      <name>JBoss Repository</name>
+      <url>http://repository.jboss.org/maven2</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>java.net maven repository</id>
+      <url>http://download.java.net/maven/2</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
+  
+  <!-- **************** -->
+  <!-- Reporting        -->
+  <!-- **************** -->
+  
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <id>aggregate</id>
+            <reports>
+              <report>aggregate</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+   </reporting>
+  
+</project>
