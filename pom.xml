@@ -5,22 +5,22 @@
   <parent>
     <groupId>org.jboss</groupId>
     <artifactId>jboss-parent</artifactId>
-    <version>5-beta-4</version>
+    <version>5-beta-5</version>
   </parent>
 
-  <name>GateIn parent</name>
+  <name>GateIn - Maven parent</name>
   <description>Parent POM for GateIn components project.</description>
   <url>www.jboss.org/gatein</url>
   
   <groupId>org.gatein</groupId>
   <artifactId>gatein-parent</artifactId>
-  <version>1.0.0-Beta03</version>
+  <version>1.0.0-Beta04</version>
   <packaging>pom</packaging>
     
   <scm>
-    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/tools/maven/parent/tags/1.0.0-Beta03</connection>
-    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/tools/maven/parent/tags/1.0.0-Beta03</developerConnection>
-    <url>http://fisheye.jboss.org/browse/gatein/tools/maven/parent/tags/1.0.0-Beta03</url>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/tools/maven/parent/tags/1.0.0-Beta04</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/tools/maven/parent/tags/1.0.0-Beta04</developerConnection>
+    <url>http://fisheye.jboss.org/browse/gatein/tools/maven/parent/tags/1.0.0-Beta04</url>
   </scm>
   
   <properties>
@@ -80,8 +80,6 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
           <configuration>
-            <!-- This is a workaroud for MSOURCES-44 -->
-            <includePom>true</includePom>
             <archive>
               <manifest>
                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
