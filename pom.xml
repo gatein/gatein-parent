@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.jboss</groupId>
     <artifactId>jboss-parent</artifactId>
-    <version>5-beta-3</version>
+    <version>5-beta-4</version>
   </parent>
 
   <name>GateIn parent</name>
@@ -14,13 +14,13 @@
   
   <groupId>org.gatein</groupId>
   <artifactId>gatein-parent</artifactId>
-  <version>1.0.0-Beta01</version>
+  <version>1.0.0-Beta02</version>
   <packaging>pom</packaging>
     
   <scm>
-    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/tools/maven/parent/tags/1.0.0-Beta01</connection>
-    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/tools/maven/parent/tags/1.0.0-Beta01</developerConnection>
-    <url>http://fisheye.jboss.org/browse/gatein/tools/maven/parent/tags/1.0.0-Beta01</url>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/tools/maven/parent/tags/1.0.0-Beta02</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/tools/maven/parent/tags/1.0.0-Beta02</developerConnection>
+    <url>http://fisheye.jboss.org/browse/gatein/tools/maven/parent/tags/1.0.0-Beta02</url>
   </scm>
   
   <properties>
