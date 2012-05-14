@@ -14,13 +14,13 @@
   
   <groupId>org.gatein</groupId>
   <artifactId>gatein-parent</artifactId>
-  <version>1.0.1-GA</version>
+  <version>1.0.2-GA</version>
   <packaging>pom</packaging>
     
   <scm>
-    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/maven/parent/tags/1.0.1-GA</connection>
-    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/maven/parent/tags/1.0.1-GA</developerConnection>
-    <url>http://fisheye.jboss.org/browse/gatein/maven/parent/tags/1.0.1-GA</url>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/maven/parent/tags/1.0.2-GA</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/maven/parent/tags/1.0.2-GA</developerConnection>
+    <url>http://fisheye.jboss.org/browse/gatein/maven/parent/tags/1.0.2-GA</url>
   </scm>
   
   <properties>
@@ -32,6 +32,10 @@
     <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
     <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
     <maven.compiler.optimize>true</maven.compiler.optimize>
+
+    <!-- maven-compiler-plugin -->
+    <maven.compiler.target>1.5</maven.compiler.target>
+    <maven.compiler.source>1.5</maven.compiler.source>
 
     <!-- maven-enforcer-plugin -->
     <maven.min.version>2.2.1</maven.min.version>
@@ -100,22 +104,6 @@
   <profiles>
     <profile>
       <id>release</id>
-      <repositories>
-        <!--  Used by animal-sniffer -->
-        <repository>
-          <id>maven2-repository.dev.java.net</id>
-          <name>Java.net Repository for Maven</name>
-          <url>http://download.java.net/maven/2/</url>
-        </repository>
-      </repositories>
-      <pluginRepositories>
-        <!--  Used by animal-sniffer -->
-        <pluginRepository>
-          <id>maven2-repository.dev.java.net</id>
-          <name>Java.net Repository for Maven</name>
-          <url>http://download.java.net/maven/2/</url>
-        </pluginRepository>
-      </pluginRepositories>
       <build>
         <pluginManagement>
           <plugins>
@@ -170,27 +158,6 @@
                 <goals>
                   <goal>create</goal>
                 </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.jvnet</groupId>
-            <artifactId>animal-sniffer</artifactId>
-            <version>1.2</version>
-            <executions>
-              <execution>
-                <id>check-java-compatibility</id>
-                <phase>compile</phase>
-                <goals>
-                  <goal>check</goal>
-                </goals>
-                <configuration>
-                  <signature>
-                    <groupId>org.jvnet.animal-sniffer</groupId>
-                    <artifactId>java1.5</artifactId>
-                    <version>1.0</version>
-                  </signature>
-                </configuration>
               </execution>
             </executions>
           </plugin>
