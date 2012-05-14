@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.jboss</groupId>
     <artifactId>jboss-parent</artifactId>
-    <version>5-beta-5</version>
+    <version>5</version>
   </parent>
 
   <name>GateIn - Maven parent</name>
@@ -14,13 +14,13 @@
   
   <groupId>org.gatein</groupId>
   <artifactId>gatein-parent</artifactId>
-  <version>1.0.0-GA</version>
+  <version>1.1.0-Beta01</version>
   <packaging>pom</packaging>
     
   <scm>
-    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/maven/parent/tags/1.0.0-GA</connection>
-    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/maven/parent/tags/1.0.0-GA</developerConnection>
-    <url>http://fisheye.jboss.org/browse/gatein/maven/parent/tags/1.0.0-GA</url>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/maven/parent/tags/1.1.0-Beta01</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/maven/parent/tags/1.1.0-Beta01</developerConnection>
+    <url>http://fisheye.jboss.org/browse/gatein/maven/parent/tags/1.1.0-Beta01</url>
   </scm>
   
   <properties>
@@ -33,17 +33,41 @@
     <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
     <maven.compiler.optimize>true</maven.compiler.optimize>
 
+    <!-- maven-compiler-plugin -->
+    <maven.compiler.target>1.6</maven.compiler.target>
+    <maven.compiler.source>1.6</maven.compiler.source>
+
     <!-- maven-enforcer-plugin -->
     <maven.min.version>2.2.1</maven.min.version>
         
     <!-- maven-release-plugin -->
     <autoVersionSubmodules>true</autoVersionSubmodules>
 
-    <!-- maven-release-plugin --> 
-    <arguments>-Prelease,pkg-tomcat,pkg-jbossas -DskipTests</arguments> 
-
     <!-- cf http://jira.codehaus.org/browse/MRELEASE-3 --> 
     <preparationGoals>clean install</preparationGoals> 
+
+    <!-- **************** -->
+    <!-- Plugins versions -->
+    <!-- **************** -->
+    <version.antrun.plugin>1.6</version.antrun.plugin>
+    <version.clean.plugin>2.4.1</version.clean.plugin>
+    <version.checkstyle.plugin>2.6</version.checkstyle.plugin>
+    <version.compiler.plugin>2.3.2</version.compiler.plugin>
+    <version.dependency.plugin>2.2</version.dependency.plugin>
+    <version.deploy.plugin>2.5</version.deploy.plugin>
+    <version.install.plugin>2.3.1</version.install.plugin>
+    <version.jar.plugin>2.3.1</version.jar.plugin>
+    <version.surefire.plugin>2.7.2</version.surefire.plugin>
+    <version.resources.plugin>2.4.3</version.resources.plugin>
+    <version.war.plugin>2.1.1</version.war.plugin>
+    <version.ear.plugin>2.5</version.ear.plugin>
+    <version.site.plugin>2.2</version.site.plugin>
+    <version.source.plugin>2.1.2</version.source.plugin>
+    <version.javadoc.plugin>2.7</version.javadoc.plugin>
+    <version.buildnumber.plugin>1.0-beta-4</version.buildnumber.plugin>
+    <version.exec.plugin>1.2</version.exec.plugin>
+    <version.build-helper.plugin>1.5</version.build-helper.plugin>
+
   </properties>
   
   <!-- **************** -->
@@ -56,13 +80,94 @@
       <!-- Plugins are sorted by shortname : clean, deploy, ... -->
       <plugins>
         <plugin>
+           <groupId>org.codehaus.mojo</groupId>
+           <artifactId>exec-maven-plugin</artifactId>
+           <version>${version.exec.plugin}</version>
+        </plugin>
+        <plugin>
+           <groupId>org.codehaus.mojo</groupId>
+           <artifactId>build-helper-maven-plugin</artifactId>
+           <version>${version.build-helper.plugin}</version>
+        </plugin>
+	<plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>${version.antrun.plugin}</version>
+        </plugin>
+        <plugin>
           <groupId>org.codehaus.mojo</groupId>
-          <artifactId>jboss-packaging-maven-plugin</artifactId>
-          <version>2.0-beta-1</version>
+          <artifactId>buildnumber-maven-plugin</artifactId>
+          <version>${version.buildnumber.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>${version.checkstyle.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>${version.clean.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${version.compiler.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>${version.dependency.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${version.deploy.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>${version.install.plugin}</version>
+        </plugin>
+        <plugin>                
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${version.resources.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${version.javadoc.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>${version.site.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${version.surefire.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>${version.source.plugin}</version>
+        </plugin>   
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>${version.war.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-ear-plugin</artifactId>
+          <version>${version.ear.plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
+          <version>${version.jar.plugin}</version>
           <configuration>
             <archive>
               <manifest>
@@ -100,22 +205,6 @@
   <profiles>
     <profile>
       <id>release</id>
-      <repositories>
-        <!--  Used by animal-sniffer -->
-        <repository>
-          <id>maven2-repository.dev.java.net</id>
-          <name>Java.net Repository for Maven</name>
-          <url>http://download.java.net/maven/2/</url>
-        </repository>
-      </repositories>
-      <pluginRepositories>
-        <!--  Used by animal-sniffer -->
-        <pluginRepository>
-          <id>maven2-repository.dev.java.net</id>
-          <name>Java.net Repository for Maven</name>
-          <url>http://download.java.net/maven/2/</url>
-        </pluginRepository>
-      </pluginRepositories>
       <build>
         <pluginManagement>
           <plugins>
@@ -173,82 +262,11 @@
               </execution>
             </executions>
           </plugin>
-          <plugin>
-            <groupId>org.jvnet</groupId>
-            <artifactId>animal-sniffer</artifactId>
-            <version>1.2</version>
-            <executions>
-              <execution>
-                <id>check-java-compatibility</id>
-                <phase>compile</phase>
-                <goals>
-                  <goal>check</goal>
-                </goals>
-                <configuration>
-                  <signature>
-                    <groupId>org.jvnet.animal-sniffer</groupId>
-                    <artifactId>java1.5</artifactId>
-                    <version>1.0</version>
-                  </signature>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
         </plugins>
       </build>
     </profile>
   </profiles>
 
-  <!-- **************** -->
-  <!-- Repositiories    -->
-  <!-- **************** -->
-  
-  <repositories>
-    <repository>
-      <id>repository.jboss.org</id>
-      <name>JBoss Repository</name>
-      <url>http://repository.jboss.org/maven2</url>
-    </repository>
-    <repository>
-      <id>snapshots.jboss.org</id>
-      <name>JBoss Snapshots Repository</name>
-      <url>http://snapshots.jboss.org/maven2</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
-  
-  <pluginRepositories>
-    <pluginRepository>
-      <id>apache.org</id>
-      <name>Maven Plugin Snapshots</name>
-      <url>http://people.apache.org/repo/m2-snapshot-repository</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-    <pluginRepository>
-      <id>repository.jboss.org</id>
-      <name>JBoss Repository</name>
-      <url>http://repository.jboss.org/maven2</url>
-    </pluginRepository>
-    <pluginRepository>
-      <id>java.net maven repository</id>
-      <url>http://download.java.net/maven/2</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
-
-  
   <!-- **************** -->
   <!-- Reporting        -->
   <!-- **************** -->
