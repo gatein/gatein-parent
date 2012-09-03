@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.jboss</groupId>
     <artifactId>jboss-parent</artifactId>
-    <version>6-beta-2</version>
+    <version>9</version>
   </parent>
 
   <name>GateIn - Maven parent</name>
@@ -14,14 +14,22 @@
   
   <groupId>org.gatein</groupId>
   <artifactId>gatein-parent</artifactId>
-  <version>1.1.1-Beta01-SNAPSHOT</version>
+  <version>1.2.0.Alpha01-SNAPSHOT</version>
   <packaging>pom</packaging>
     
   <scm>
-    <connection>scm:svn:http://anonsvn.jboss.org/repos/gatein/maven/parent/trunk</connection>
-    <developerConnection>scm:svn:https://svn.jboss.org/repos/gatein/maven/parent/trunk</developerConnection>
-    <url>http://fisheye.jboss.org/browse/gatein/maven/parent/trunk</url>
+    <connection>scm:git:git://github.com/gatein/gatein-parent.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/gatein/gatein-parent.git</developerConnection>
+    <url>https://github.com/gatein/gatein-parent</url>
   </scm>
+  
+  <licenses>
+    <license>
+      <name>GNU Lesser General Public License (LGPL)</name>
+			<url>http://repository.jboss.org/licenses/lgpl-2.1.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
   
   <properties>
     <!-- ************** -->
@@ -32,10 +40,16 @@
     <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
     <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
     <maven.compiler.optimize>true</maven.compiler.optimize>
+    <maven.compiler.source>1.6</maven.compiler.source>
+    <maven.compiler.target>1.6</maven.compiler.target>
 
     <maven.min.version>2.2.1</maven.min.version>
         
     <!-- maven-release-plugin -->
+    <useReleaseProfile>false</useReleaseProfile>
+    <arguments>-Prelease</arguments>
+    <version.release.plugin>2.2.1</version.release.plugin>
+    <pushChanges>false</pushChanges>
     <autoVersionSubmodules>true</autoVersionSubmodules>
 
     <!-- cf http://jira.codehaus.org/browse/MRELEASE-3 --> 
@@ -51,9 +65,10 @@
     <version.site.plugin>2.2</version.site.plugin>
     <version.war.plugin>2.1.1</version.war.plugin>
     <version.ear.plugin>2.5</version.ear.plugin>
-    <version.buildnumber.plugin>1.0-beta-4</version.buildnumber.plugin>
+    <version.buildnumber.plugin>1.1</version.buildnumber.plugin>
     <version.exec.plugin>1.2</version.exec.plugin>
     <version.build-helper.plugin>1.5</version.build-helper.plugin>
+    <version.javadoc.plugin>2.8.1</version.javadoc.plugin>
 
   </properties>
   
@@ -126,6 +141,11 @@
               </manifest>
             </archive>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${version.javadoc.plugin}</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -205,6 +225,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${version.javadoc.plugin}</version>
         <reportSets>
           <reportSet>
             <id>aggregate</id>
