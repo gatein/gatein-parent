@@ -16,7 +16,7 @@
   <artifactId>gatein-parent</artifactId>
   <version>1.2.0.Alpha02-SNAPSHOT</version>
   <packaging>pom</packaging>
-    
+
   <scm>
     <connection>scm:git:git://github.com/gatein/gatein-parent.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/gatein/gatein-parent.git</developerConnection>
@@ -155,46 +155,6 @@
     <profile>
       <id>release</id>
       <build>
-        <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-jar-plugin</artifactId>
-              <configuration>
-                <archive>
-                  <!-- Additional entries in Manifest -->
-                  <manifestEntries>
-                    <SCM-Revision>${buildNumber}</SCM-Revision>
-                  </manifestEntries>
-                </archive>
-              </configuration>
-            </plugin>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-javadoc-plugin</artifactId>
-              <configuration>
-                <archive>
-                  <!-- Additional entries in Manifest -->
-                  <manifestEntries>
-                    <SCM-Revision>${buildNumber}</SCM-Revision>
-                  </manifestEntries>
-                </archive>
-              </configuration>
-            </plugin>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-source-plugin</artifactId>
-              <configuration>
-                <archive>
-                  <!-- Additional entries in Manifest -->
-                  <manifestEntries>
-                    <SCM-Revision>${buildNumber}</SCM-Revision>
-                  </manifestEntries>
-                </archive>
-              </configuration>
-            </plugin>
-          </plugins>
-        </pluginManagement>
         <plugins>
           <plugin>
             <groupId>org.codehaus.mojo</groupId>
