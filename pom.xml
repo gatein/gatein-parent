@@ -10,7 +10,7 @@
 
   <name>GateIn - Maven parent</name>
   <description>Parent POM for GateIn components project.</description>
-  <url>www.jboss.org/gatein</url>
+  <url>www.gatein.org/</url>
   
   <groupId>org.gatein</groupId>
   <artifactId>gatein-parent</artifactId>
@@ -23,6 +23,15 @@
     <url>https://github.com/gatein/gatein-parent</url>
   </scm>
   
+  <developers>
+    <developer>
+      <id>gatein.org</id>
+      <name>GateIn Community</name>
+      <organization>GateIn</organization>
+      <organizationUrl>http://www.gatein.org</organizationUrl>
+    </developer>
+  </developers>
+
   <licenses>
     <license>
       <name>GNU Lesser General Public License (LGPL)</name>
@@ -39,7 +48,7 @@
     <!-- maven-compiler-plugin -->
     <maven.compiler.optimize>true</maven.compiler.optimize>
 
-    <maven.min.version>2.2.1</maven.min.version>
+    <maven.min.version>3.0.4</maven.min.version>
         
     <!-- maven-release-plugin -->
     <useReleaseProfile>false</useReleaseProfile>
@@ -152,11 +161,5 @@
       </plugin>
     </plugins>
   </reporting>
-
-  <!--List of all project commiters. Fell free to add yourself and sorry if your name was missing-->
-  <developers>
-    <!--TODO-->
-  </developers>
-
 
 </project>
